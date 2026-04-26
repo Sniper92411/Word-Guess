@@ -1,0 +1,154 @@
+# 语言文件 zh_cn
+# 版本：v1.6.0-pre
+zh_cn;
+
+-WordGuessGame.UserError=用户错误：
+-WordGuessGame.Start.Success=成功开始了一局游戏。
+-WordGuessGame.Start.Gameisrunning=已有一个游戏正在运行了！
+-WordGuessGame.Start.InsufficientWords=单词表中的所有单词已经猜完了！
+-WordGuessGame.End.Invaild=无法结束游戏：尚未达成条件。
+-WordGuessGame.End.Win=游戏结束，你赢了！
+-WordGuessGame.End.Lose=游戏结束，你输了。
+-WordGuessGame.Rating.Excellent=   Excellent - 实力与运气并存！你完美地完成了游戏！
+-WordGuessGame.Rating.A=     战绩相当可观！你超越了大部分人的水平！
+-WordGuessGame.Rating.B=     中规中矩，期待你更好的表现！
+-WordGuessGame.Rating.C=     你具有潜在的进步空间！
+-WordGuessGame.Rating.Fail=    Fail - 再接再厉！
+-WordGuessGame.Input.Nothing=你未输入任何内容。
+-WordGuessGame.Input.Invaild=你输入的不是任何指令。
+-WordGuessGame.GuessAlpha.Guessed=无效猜测：这个字母你已经猜过了。
+-WordGuessGame.GuessAlpha.Invaild=无效猜测：输入的字符不是字母。
+-WordGuessGame.GuessAlpha.Fail=猜测字母失败，你将失去 1 点生命值。
+-WordGuessGame.GuessAlpha.Success=猜测字母成功！单词中共包含 {} 个字母 {} 和 {} 个字母 {}。
+-WordGuessGame.GuessWord.Invaild=无效输入：你没有进行一次有效的猜测或者猜单词。
+-WordGuessGame.GuessWord.Fail=猜词失败，你将失去 2 点生命值。
+-WordGuessGame.GuessWord.Success=猜词成功！你立即获得胜利！
+-WordGuessGame.DictionaryMode.GuessBanned=在词典模式的翻译模式下，你只能进行猜词。
+-WordGuessGame.DictionaryMode.TranslationHint.Success=你消耗了 {} 点生命值，翻开了 1 个字母。
+-WordGuessGame.DictionaryMode.TranslationHint.Insufficient=剩余生命值不足，无法提示。
+-WordGuessGame.ShowMeaning.OK=这个单词的中文释义是：{}
+
+# 固定文本
+-WordGuessGame.Text.Hello=欢迎游玩猜词游戏！
+-WordGuessGame.Text.Hello=这是一个英语单词猜测推理小游戏，你可以通过询问单词中包含的字母，结合常见的字母排列，最终揭露真相。
+-WordGuessGame.Text.Hello+
+-WordGuessGame.Text.Load=你正在游玩经典模式。
+-WordGuessGame.Text.Load=如果需要修改游戏模式或者其他设置，你可以打开“settings.txt”查看详情。
+-WordGuessGame.Text.Turn_HP=当前生命值: {}
+-WordGuessGame.Text.Turn_Guessed=你已猜出了 {} 个字母，总共有 {} 个字母。
+-WordGuessGame.Text.Turn_WordStatus=当前单词状态：
+-WordGuessGame.Text.Turn_GuessedStatus=你已经猜过这些字母：
+-WordGuessGame.Text.Turn_Help=**如果不知道怎么玩，请输入1以获取游戏帮助**
+-WordGuessGame.Text.Turn_Help+
+-WordGuessGame.Text.Turn_Remind=请作出你的猜测:
+-WordGuessGame.Text.GiveUp=你确定你要放弃吗？
+-WordGuessGame.Text.GiveUp=如果你确定，再次输入 / 以确认。
+-WordGuessGame.Text.InteractResult+
+-WordGuessGame.Text.InteractResult=还有 {} 个未知字母，请继续游戏。
+-WordGuessGame.Text.End_Word=正确的单词是: {}
+-WordGuessGame.Text.End_Meaning=它的中文含义是：{}
+-WordGuessGame.Text.End_HP=生命值：{}/10
+-WordGuessGame.Text.End_Guessed=猜出字母：{}/{} ({:.2f}%)
+-WordGuessGame.Text.End_Rating=等阶/评级...
+-WordGuessGame.Text.Continue=退出游戏请关闭窗口。按任意键开始新的一局游戏。
+-WordGuessGame.Text.Finish=你已猜完所有单词！按任意键结束游戏。
+
+-WordGuessGame.DictionaryMode.Text.Load=欢迎进入猜词游戏 词典模式
+-WordGuessGame.DictionaryMode.Text.Load=它属于猜词游戏的进阶模式，也许对单词记忆有奇效！
+-WordGuessGame.DictionaryMode.Text.ModeChoose=游戏即将开始！你可以根据以下模式的描述，选择适合自己的游戏模式。
+-WordGuessGame.DictionaryMode.Text.ModeChoose=你可以输入模式对应的编号或相应单词以进行选择。若输入的内容无效，则自动选择第一项。
+-WordGuessGame.DictionaryMode.Text.ModeChoose= - 胜率模式(1/Rating)：随机抽取若干单词，按猜出单词剩余的生命值评级。
+-WordGuessGame.DictionaryMode.Text.ModeChoose= - 翻译模式(2/Translation)：随机抽取若干单词，根据中文翻译单词，消耗更少的生命值获取高评级。
+-WordGuessGame.DictionaryMode.Text.ModeChoose= - 极限模式(3/Hardcore)：随机抽取若干单词，若生命值耗尽则进入濒死状态！按成功猜出的单词数进行评级。
+-WordGuessGame.DictionaryMode.Text.ModeChoose=输入你选择的模式：
+-WordGuessGame.DictionaryMode.Text.Turns=输入你将面对的单词总数(单词表总数 {} 个)：
+-WordGuessGame.DictionaryMode.Text.StartConfirm:1=你选择的模式：{}
+-WordGuessGame.DictionaryMode.Text.StartConfirm:2=单词总数：{}
+-WordGuessGame.DictionaryMode.Text.StartConfirm:3=准备好了吗？按任意键开始游戏！
+-WordGuessGame.DictionaryMode.Text.TranslationMeaning=翻译模式下，你需要根据单词的中文释义翻译出英文单词：{}
+-WordGuessGame.DictionaryMode.Text.TurnComplete=完成！剩余 {} 轮猜测。
+-WordGuessGame.DictionaryMode.Text.TurnComplete+
+-WordGuessGame.DictionaryMode.Text.TurnFail=失败。剩余 {} 轮猜测。
+-WordGuessGame.DictionaryMode.Text.TurnFail+
+-WordGuessGame.DictionaryMode.Text.CurrentHp=总生命值：{}/{}
+-WordGuessGame.DictionaryMode.Text.GameFinish=游戏结束！你完成了所有单词的猜测！
+-WordGuessGame.DictionaryMode.Text.End_HP=全局剩余生命值：{} / {}
+-WordGuessGame.DictionaryMode.Text.End_HPPercentage=生命值百分比：{:.2f}%
+-WordGuessGame.DictionaryMode.Text.End_CompleteCount=成功猜词次数：{} / {}
+-WordGuessGame.DictionaryMode.Text.End_CompletePercentage=完成率：{:.2f}%
+-WordGuessGame.DictionaryMode.Text.End_CompletePercentage+
+-WordGuessGame.DictionaryMode.Text.HardcoreGiveUp=注意！在极限模式中主动放弃，意味着消耗复活次数，或直接结束整局游戏！
+-WordGuessGame.DictionaryMode.Text.HardcoreRevive=你在极限模式中耗尽生命值，但复活并获得了 5 点生命值。这是最后的重来机会，绝地反击！
+-WordGuessGame.DictionaryMode.Text.HardcoreRevive+
+-WordGuessGame.DictionaryMode.Text.HardcoreAbort=游戏结束！你失去了所有生命值。
+-WordGuessGame.DictionaryMode.Text.HardcoreAbort+
+
+# 帮助
+-WordGuessGame.Help.Basic=欢迎游玩猜词游戏！
+-WordGuessGame.Help.Basic=这是一个英语单词猜测推理小游戏，你可以通过询问单词中包含的字母，结合常见的字母排列，最终揭露真相。
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=基本玩法：游戏开始时：程序会隐藏一个单词，其中所有字母都是未知的。程序也会告诉你这个单词的长度。
+-WordGuessGame.Help.Basic=游戏玩法：你可以询问，单词中是否包含某个字母。如果单词中至少有一个你询问的字母(无论大小写)，即猜测字母成功，则程序会将这些字母所在的位置的字符显现出来。
+-WordGuessGame.Help.Basic=例如：在询问了一个长度为6的单词 ______ 中是否有字母e后，程序确认有一个对应的字母，并展示了E或e在单词中的位置：___e__
+-WordGuessGame.Help.Basic=反之，猜测字母失败，则你将失去1点生命值。
+-WordGuessGame.Help.Basic=每局游戏玩家有10点生命值。当生命值小于等于0时，游戏失败。
+-WordGuessGame.Help.Basic=如果玩家成功揭露出整个单词，则游戏胜利。
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=整个单词的猜测(称为 猜词)：
+-WordGuessGame.Help.Basic=如果你在进行了若干次猜测后，已经非常确定正确的单词了，则你可以直接输入整个单词，进行猜词。
+-WordGuessGame.Help.Basic=若你猜的单词与正确的单词相符，则游戏直接胜利。否则，你将失去2点生命值。
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=提示：
+-WordGuessGame.Help.Basic=每局游戏中，玩家可以在任何时候获取提示。
+-WordGuessGame.Help.Basic=提示的效果是展示这个单词的中文释义。
+-WordGuessGame.Help.Basic=提示的使用方法：输入字符 0。
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=结束：
+-WordGuessGame.Help.Basic=玩家可以输入 / 主动放弃游戏。
+-WordGuessGame.Help.Basic=当达成胜利或失败的条件时，程序会自动结束游戏，并展示正确的单词、它的中文释义和玩家在本局内的表现（包括剩余生命值、猜出的字母个数）
+-WordGuessGame.Help.Basic=然后，游戏会根据本局表现，展示一个评级。要获取评级的相关帮助信息，请输入2。
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=祝你玩得开心！
+
+-WordGuessGame.Help.Rating=剩余生命值  评级
+-WordGuessGame.Help.Rating=9~10       Excellent
+-WordGuessGame.Help.Rating=6~8        A
+-WordGuessGame.Help.Rating=4~5        B
+-WordGuessGame.Help.Rating=1~3        C
+-WordGuessGame.Help.Rating=0          Fail
+
+-WordGuessGame.Help.Interact=交互指令帮助：
+-WordGuessGame.Help.Interact=[单个字母] 猜测字母
+-WordGuessGame.Help.Interact=[单词] 猜测单词
+-WordGuessGame.Help.Interact=/ 放弃当前游戏
+-WordGuessGame.Help.Interact=0 使用提示
+-WordGuessGame.Help.Interact=1 获取基础帮助信息
+-WordGuessGame.Help.Interact=2 获取评级帮助信息
+-WordGuessGame.Help.Interact=4 获取交互帮助信息
+
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=胜率模式规则：
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=你需要连续进行多轮猜测，每次会面对一个随机单词。猜测单词的行为与默认模式无异。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=无论某个单词是否成功猜测，一轮猜测结束后将进入下一轮猜测。每轮猜测不共享生命值。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=在完成所有单词的猜测后，将按照你在所有猜测中剩余的生命值评级。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating+
+
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=翻译模式规则：
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=你需要连续进行多轮猜测，每次会面对一个随机单词。你只能进行猜词，而不能猜测单个字母。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=你会获得目标单词的中文释义和这个单词的首字母。胜利条件：通过这些信息，直接猜到单词。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=这个模式中存在提示：消耗一定生命值，翻开第一个未知字母。消耗的生命值由 2 点每次递增，生命值不足时，无法使用提示。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=在完成所有单词的猜测后，将按照你在所有猜测中剩余的生命值评级。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation+
+
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=极限模式规则:
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=你需要连续进行多轮猜测，每次会面对一个随机单词。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=你初始拥有 15 点生命值，每轮猜测将继承上一轮的生命值。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=当你成功猜测一个单词时，将按照剩余生命值的一定比例回复当前生命值，最多至 15 点。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=当你第一次在任何猜测中耗尽生命值时，你可以立即进行一次猜词，若成功则视为“复活”，游戏继续。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=一局游戏仅能复活一次。当你第二次耗尽生命值时，游戏中止，视为失败。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=如果你成功完成所有单词的猜测，将按照当前剩余的生命值评级。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore+

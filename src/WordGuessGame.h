@@ -12,38 +12,23 @@ using namespace std;
 struct InteractResult { // 单次用户交互的返回结构
     string type, id; // type: 交互类型 id: 交互结果 可能可以直接转译
     int code; // 结果代码
-    int GuessAlpha_upper, GuessAlpha_lower; // 仅猜测单个字母时生效 返回猜测匹配的（大小写）字母个数
-    int Hint_upper, Hint_lower; // 仅提示时生效 返回提示显示出的字母
-    string End_word, End_meaning; // 仅结束时生效 返回正确单词和它的中文释义
     string GetWord_word; // 预留的返回 目前作用未知
-    unordered_map<string, int> IntReturn; // 所有整数返回键值对
+    unordered_map<string, int> IntReturn; // 整数返回键值对
     unordered_map<string, string> StringReturn; // 一般返回键值对
     InteractResult(){}
+    InteractResult(string type) {
+        this->type = type;
+    }
     InteractResult(string type, int code, string id) {
         this->type = type, this->code = code, this->id = id;
-    }
-    InteractResult(string type, int code, string id, int upper, int lower) {
-        this->type = type, this->code = code, this->id = id;
-        if(type == "GuessAlpha") this->GuessAlpha_upper = upper, this->GuessAlpha_lower = lower;
-        else if(type == "Hint") this->Hint_upper = upper, this->Hint_lower = lower;
-    }
-    InteractResult(string type, int code, string id, string S) {
-        this->type = type, this->code = code, this->id = id;
-        this->GetWord_word = S;
-    }
-    InteractResult(string type, int code, string id, string S1, string S2) {
-        this->type = type, this->code = code, this->id = id;
-        this->End_word = S1, this->End_meaning = S2;
     }
 };
 class WordGuessGame {
     private:
-        int status, hp, len, alphalen, count = 0; // 声明内部变量
-        string word;
-        bool hintAvailable, hintUsed, show[15];
-        unordered_map<char, bool> guessed;
-        unordered_map<string, string> meanings;
-        vector<string> words, languages = {"zh_cn", "en_us"}; // 可用的语言：中文、英文
+        int status, hp, len, alphalen, count = 0, completion = 0; // 声明内部变量 游戏状态、血量、单词总长、字母占长度、猜出计数器、已猜过的词数
+        string word, gamemode; // word: 谜底单词 gamemode: 游戏模式（词典模式下，rating为胜率模式，translation为翻译模式，hardcore为极限模式）
+        bool show[20]; // show[i]: 位置i的字符是否显示
+        unordered_map<char, bool> guessed; // 已猜过的字母
         int guessupdate(char t) { // 对猜测更新，返回匹配的字符个数
             int ret = 0;
             for(int i = 0;i < word.length();i++) {
@@ -55,107 +40,45 @@ class WordGuessGame {
             return ret;
         }
     public:
-        WordGuessGame() { // 游戏初始化
-            string temp;
-            ifstream ifs;
-            ifs.open("settings.txt"); // 初始化设置
-            if(!ifs.is_open()) {
-                throw WordGuessException("Failed to open input file. Error opening file \"settings.txt\"");
-                exit(1);
-            }
-            while(!ifs.eof()) {
-                getline(ifs, temp);
-                if(temp[0] == '#') continue;
-                for(int i = 0;i < temp.length();i++) {
-                    if(temp[i] == '=') {
-                        string key = temp.substr(0, i), value = temp.substr(i+1);
-                        if(value[0] >= '0' && value[0] <= '9')
-                            IntSettingList.set(key, atoi(value.c_str()));
-                        else
-                            StringSettingList.set(key, value);
-                        break;
-                    }
-                }
-            }
-            ifs.close(); // 初始化设置结束
-            string language = "unknown", id, message; // 初始化语言转译
-            for(int i = 0;i < languages.size();i++) {
-                ifs.open(languages[i] + ".txt");
-                if(!ifs.is_open()) continue;
-                while(!ifs.eof()) {
-                    getline(ifs, temp);
-                    if(temp[0] == '#') continue;
-                    for(int i = 0;i < temp.length();i++) {
-                        if(temp[i] == ';') {
-                            language = temp.substr(0, i);
-                            translator.add_language(language);
-                            break;
-                        }
-                        if(temp[i] == '=') {
-                            id = temp.substr(1, i-1);
-                            message = temp.substr(i+1);
-                            translator.add_message(language, id, message);
-                            break;
-                        }
-                    }
-                }
-                ifs.close(); // 初始化语言转译结束
-            }
-            ifs.open(StringSettingList.get("CustomInputFile")); // 初始化单词
-            if(!ifs.is_open()) ifs.open("words.txt");
-            if(!ifs.is_open()) {
-                throw WordGuessException("Failed to open input file. Error opening words input file.");
-                exit(1);
-            }
-            while(!ifs.eof()) {
-                getline(ifs, temp);
-                if(temp[0] == '#') continue;
-                string wd, mn;
-                for(int i = 0;i < temp.length();i++) {
-                    if(temp[i] == ' ') {
-                        wd = temp.substr(0, i);
-                        mn = temp.substr(i+1);
-                        break;
-                    }
-                }
-                if(wd.length() <= 5 || wd.length() >= 16) continue; // 单个单词长度限制：6-15（应该在制作单词表时检查完毕）
-                words.push_back(wd);
-                meanings[wd] = mn;
-            }
-            if(!words.size()) {
-                throw WordGuessException("Load game failed. No contents in words input file.");
-                exit(1);
-            }
-            ifs.close(); // 初始化单词结束
+        WordGuessGame() {
+            this->gamemode = "default";
         }
-        int step() { // 游戏步进 并返回当前进行到的阶段
+        WordGuessGame(string gamemode) {
+            if(gamemode == "rating" || gamemode == "translation" || gamemode == "hardcore") this->gamemode = gamemode;
+            else this->gamemode = "default";
+        }
+        void SetGamemode(string gamemode) {
+            if(gamemode == "rating" || gamemode == "translation" || gamemode == "hardcore") this->gamemode = gamemode;
+        }
+        string GetGamemode() {
+            return this->gamemode;
+        }
+        void GiveUp() { // 放弃
+            hp = 0;
+        }
+        int GameStage() { // 仅获取游戏进行到的阶段 用于判断游戏是否应继续或结束
+            if(!status) return -2;
             if(count == alphalen) {
-                return 1;
+                return 1; // 游戏结束 玩家胜利
             }
             else if(hp <= 0) {
                 hp = 0;
-                return -1;
+                return -1; // 游戏结束 玩家失败
             }
-            if(hp <= 5 && alphalen - count > 2 && !hintUsed) hintAvailable = true;
-            else hintAvailable = false;
-            return 0;
+            return 0; // 游戏继续（不满足结束条件）
         }
-        void GiveUp() { // 放弃
-            this->status = 0, this->hp = 0;
-        }
-        InteractResult Start() {
+        InteractResult Start(int StartHp = 10) { // 开始游戏
             if(status != 0) return InteractResult("Start", 0, "WordGuessGame.Start.Gameisrunning");
-            status = 1;
-            count = 0, hp = 10;
-            for(int i = 0;i < 15;i++) show[i] = false;
-            hintAvailable = hintUsed = false;
+            status = 1; // 设置游戏状态为 进行中
+            count = 0, hp = StartHp; // 初始化计数器和血量
+            fill(show, show + 20, 0);
+            if(this->gamemode == "translation") show[0] = 1, count = 1; // 词典 翻译模式 展示首字母
             for(char c = 'a';c <= 'z';c++) {
                 guessed[c] = false;
                 guessed[char(toupper(c))] = false;
             }
-            srand(time(0));
-            int r = rand() % words.size();
-            word = words.at(r);
+            word = words.at(this->completion);
+            completion++; // 选择了一个单词 计数器+1
             len = alphalen = word.length();
             for(int i = 0;i < len;i++) {
                 if(!isalpha(word[i])) {
@@ -165,13 +88,18 @@ class WordGuessGame {
             }
             return InteractResult("Start", 1, "WordGuessGame.Start.Success");
         }
-        InteractResult End() {
-            status = 0;
-            if(hp == 0) return InteractResult("End", 0, "WordGuessGame.End.Lose", word, meanings[word]);
-            if(count == alphalen) return InteractResult("End", 1, "WordGuessGame.End.Win", word, meanings[word]);
-            return InteractResult("End", -1, "WordGuessGame.End.Invaild");
+        InteractResult End() { // 结束游戏
+            if(hp != 0 && count != alphalen) return InteractResult("End", -1, "WordGuessGame.End.Invaild");
+            status = 0; // 重置状态为 结束
+            InteractResult Result("End");
+            Result.IntReturn["remain"] = words.size() - completion;
+            Result.StringReturn["word"] = word, Result.StringReturn["meaning"] = meanings[word];
+            if(hp <= 0) Result.code = 0, Result.id = "WordGuessGame.End.Lose";
+            if(count == alphalen) Result.code = 1, Result.id = "WordGuessGame.End.Win";
+            return Result;
         }
-        InteractResult GuessAlpha(char c) {
+        InteractResult GuessAlpha(char c) { // 交互操作：用户猜测一个字母
+            if(this->gamemode == "translation") return InteractResult("GuessAlpha", -1, "WordGuessGame.DictionaryMode.GuessBanned");
             if(!isalpha(c)) return InteractResult("GuessAlpha", -1, "WordGuessGame.GuessAlpha.Invaild");
             if(guessed[c]) return InteractResult("GuessAlpha", -1, "WordGuessGame.GuessAlpha.Guessed");
             guessed[toupper(c)] = guessed[tolower(c)] = true;
@@ -182,11 +110,12 @@ class WordGuessGame {
                 return InteractResult("GuessAlpha", 0, "WordGuessGame.GuessAlpha.Fail");
             }
             count += uppercount + lowercount;
-            return InteractResult("GuessAlpha", 1, "WordGuessGame.GuessAlpha.Success", uppercount, lowercount);
+            InteractResult Result("GuessAlpha", 1, "WordGuessGame.GuessAlpha.Success");
+            Result.IntReturn["uppercount"] = uppercount, Result.IntReturn["lowercount"] = lowercount;
+            return Result;
         }
-        InteractResult GuessWord(string s) {
-            InteractResult result;
-            result.GuessAlpha_upper = result.GuessAlpha_lower;
+        InteractResult GuessWord(string s) { // 交互操作：用户猜测整个单词
+            InteractResult Result;
             for(char c : s) {
 				if(c != ' ' && c != '-' && c != '\'' && !isalpha(c)) return InteractResult("GuessWord", -1, "WordGuessGame.GuessWord.Invaild");
 			}
@@ -200,66 +129,74 @@ class WordGuessGame {
                 return InteractResult("GuessWord", 0, "WordGuessGame.GuessWord.Fail");
             }
         }
-        InteractResult Hint() {
-            if(!hintAvailable) return InteractResult("Hint", 0, "WordGuessGame.Hint.Unavailable");
-            if(hintUsed) return InteractResult("Hint", 0, "WordGuessGame.Hint.Used");
-            hintUsed = true;
-            char hintupper, hintlower;
-            for(int i = 0;i < len;i++) {
-                if(!show[i]) {
-                    hintupper = toupper(word[i]);
-                    hintlower = tolower(word[i]);
-                    break;
+        InteractResult ShowMeaning() {
+            InteractResult Result("ShowMeaning", 1, "WordGuessGame.ShowMeaning.OK");
+            Result.StringReturn["meaning"] = meanings[word];
+            return Result;
+        }
+        InteractResult Hint() { // 交互操作：提示
+            if(gamemode == "default" || gamemode == "rating") return ShowMeaning();
+            else if(gamemode == "translation") { // 翻译模式提示：消耗 2 点生命值，翻开第一个未知字母
+                InteractResult result("Hint", 1, "WordGuessGame.DictionaryMode.TranslationHint.Success");
+                int consume = 2, i = 1;
+                for(i;i < len;i++) {
+                    if(!show[i] || consume == 4) {
+                        break;
+                    }
+                    else {
+                        consume++;
+                    }
                 }
+                if(hp - consume > 0) {
+                    show[i] = true, count++, hp -= consume, result.IntReturn["consume"] = consume;
+                }
+                else {
+                    result.code = 0, result.id = "WordGuessGame.DictionaryMode.TranslationHint.Insufficient";
+                }
+                return result;
             }
-            guessed[hintupper] = guessed[hintlower] = true;
-            int upper = guessupdate(hintupper);
-            int lower = guessupdate(hintlower);
-            count += upper + lower;
-            return InteractResult("Hint", 1, "WordGuessGame.Hint.Success", hintupper, hintlower);
+            return InteractResult("Hint", -1, "");
         }
         string GetWordStatus() {
-            string result;
+            string Result;
             for(int i = 0;i < len;i++) {
-                if(show[i]) result += word[i];
-                else result += '_';
+                if(show[i]) Result += word[i];
+                else Result += '_';
             }
-            return result;
+            return Result;
         }
         unordered_map<string, int> GetGameStatus() {
-            unordered_map<string, int> result;
-            result["hp"] = hp, result["count"] = count, result["len"] = len, result["alphalen"] = alphalen;
-            result["hintAvailable"] = hintAvailable, result["hintUsed"] = hintUsed;
-            return result;
+            unordered_map<string, int> Result;
+            Result["hp"] = hp, Result["count"] = count, Result["len"] = len, Result["alphalen"] = alphalen;
+            return Result;
         }
         string GetGuessedStatus() {
-            string result;
+            string Result;
             for(char c = 'a';c <= 'z';c++) {
                 if(guessed[c]) {
-                    result.push_back(c);
-                    result.push_back(' ');
+                    Result.push_back(c);
+                    Result.push_back(' ');
                 }
             }
-            return result + '\n';
+            return Result;
         }
         string DebugInfo() {
             if(IntSettingList.get("Debug") == 0) return "";
-            string result;
-            result += "------Debug Info------\n";
-            result += format("Word: {}\n", word);
-            result += format("Word length and alpha count: {}, {}\n", len, alphalen);
-            result += format("HP: {}\n", hp);
-            result += format("Guessed: {}, {}\n", count, alphalen);
-            result += format("Hint Available and Used: {}, {}\n", hintAvailable, hintUsed);
-            result += "Characters show or not:\n";
-            for(int i = 0;i < len;i++) result += (show[i] ? "1 " : "0 ");
-            result += "\nGuessed letters:\n";
+            string Result;
+            Result += "------Debug Info------\n";
+            Result += format("Word: {}\n", word);
+            Result += format("Word length and alpha count: {}, {}\n", len, alphalen);
+            Result += format("HP: {}\n", hp);
+            Result += format("Guessed: {}, {}\n", count, alphalen);
+            Result += "Characters show or not:\n";
+            for(int i = 0;i < len;i++) Result += (show[i] ? "1 " : "0 ");
+            Result += "\nGuessed letters:\n";
             for(char c = 'a';c <= 'z';c++) if(guessed[c]) {
-                result.push_back(c);
-                result.push_back(' ');
+                Result.push_back(c);
+                Result.push_back(' ');
             }
-            result += "\n------Debug Info------\n";
-            return result;
+            Result += "\n------Debug Info------\n";
+            return Result;
         }
 };
 

@@ -1,4 +1,4 @@
-# 版本：v1.6.0-pre
+# 版本：v1.7
 
 # 这是猜词游戏的配置文件，以井号开头的是注释，提供提示说明，修改无效
 # 每一个设置都由一个设置名和一个值组成，以斜杠分隔
@@ -16,10 +16,13 @@
 Flash=1
 
 # Language(zh_cn): 选择程序的显示语言，当前支持的：zh_cn、en_us
-Language=en_us
+Language=zh_cn
 
 # Debug(0): 调试模式，仅供开发者使用，开启后能够实时监控变量和程序状态
 Debug=0
 
 # CustomInputFile(words.txt): 控制程序从哪个Text File输入单词，可用于自定义词库（格式参考默认词库words.txt）
 CustomInputFile=words.txt
+
+# DictionaryMode(0): 启用新的模式：词典模式，用于需要批量记忆单词的用户练习记忆，设置为1启用
+DictionaryMode=0

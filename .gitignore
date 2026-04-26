@@ -3,5 +3,6 @@
 /.vscode/
 /build/
 /CMakeLists.txt
+/CMakePresets.json
 WordTester*
 Word-Guess.code-workspace

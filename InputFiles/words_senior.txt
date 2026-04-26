@@ -54,3 +54,5 @@ assign 分配；布置（作业）；指派
 associate 使结合在一起；使有联系
 assume 假定，想当然地认为；承担；担任；呈现；假装
 astronomer 天文学家
+attain 达到；获得；到达
+attempt 企图；试图；尝试

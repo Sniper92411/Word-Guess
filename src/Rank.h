@@ -1,69 +1,81 @@
 #include <iostream>
 #include <windows.h>
 using namespace std;
-void Ex() {
-	cout << "            ---------" << endl;
-	cout << "           -" << endl;
-	cout << "          -" << endl;
-	cout << "         -" << endl;
-	cout << "        ---------  -   -" << endl;
-	cout << "       -           - -" << endl;
-	cout << "      -            -" << endl;
-	cout << "     -           - -" << endl;
-	cout << "    ---------  -   -" << endl;
+string Ex() {
+	string result;
+	result += "            ---------\n";
+	result += "           -\n";
+	result += "          -\n";
+	result += "         -\n";
+	result += "        ---------  -   -\n";
+	result += "       -           - -\n";
+	result += "      -            -\n";
+	result += "     -           - -\n";
+	result += "    ---------  -   -\n";
+	return result;
 }
-void U() {
-	cout << "           -         -" << endl;
-	cout << "          -         -" << endl;
-	cout << "         -         -" << endl;
-	cout << "        -         -" << endl;
-	cout << "       -         -" << endl;
-	cout << "      -         -" << endl;
-	cout << "     -         -" << endl;
-	cout << "    -         -" << endl;
-	cout << "    ---------" << endl;
+string U() {
+	string result;
+	result += "           -         -\n";
+	result += "          -         -\n";
+	result += "         -         -\n";
+	result += "        -         -\n";
+	result += "       -         -\n";
+	result += "      -         -\n";
+	result += "     -         -\n";
+	result += "    -         -\n";
+	result += "    ---------\n";
+	return result;
 }
-void A() {
-	cout << "            --" << endl;
-	cout << "           - -" << endl;
-	cout << "          -  -" << endl;
-	cout << "         -   -" << endl;
-	cout << "        -    -" << endl;
-	cout << "       -------" << endl;
-	cout << "      -      -" << endl;
-	cout << "     -       -" << endl;
-	cout << "    -        -" << endl;
+string A() {
+	string result;
+	result += "            --\n";
+	result += "           - -\n";
+	result += "          -  -\n";
+	result += "         -   -\n";
+	result += "        -    -\n";
+	result += "       -------\n";
+	result += "      -      -\n";
+	result += "     -       -\n";
+	result += "    -        -\n";
+	return result;
 }
-void B() {
-	cout << "            -------- " << endl;
-	cout << "           -       -" << endl;
-	cout << "          -       -" << endl;
-	cout << "         -       -" << endl;
-	cout << "        --------- " << endl;
-	cout << "       -        -" << endl;
-	cout << "      -        -" << endl;
-	cout << "     -        -" << endl;
-	cout << "    --------- " << endl;
+string B() {
+	string result;
+	result += "            -------- \n";
+	result += "           -       -\n";
+	result += "          -       -\n";
+	result += "         -       -\n";
+	result += "        --------- \n";
+	result += "       -        -\n";
+	result += "      -        -\n";
+	result += "     -        -\n";
+	result += "    --------- \n";
+	return result;
 }
-void C() {
-	cout << "            ------------" << endl;
-	cout << "           -" << endl;
-	cout << "          -" << endl;
-	cout << "         -" << endl;
-	cout << "        -" << endl;
-	cout << "       -" << endl;
-	cout << "      -" << endl;
-	cout << "     -" << endl;
-	cout << "    -------------" << endl;
+string C() {
+	string result;
+	result += "            ------------\n";
+	result += "           -\n";
+	result += "          -\n";
+	result += "         -\n";
+	result += "        -\n";
+	result += "       -\n";
+	result += "      -\n";
+	result += "     -\n";
+	result += "    -------------\n";
+	return result;
 }
-void F() {
-	cout << "            -----------" << endl;
-	cout << "           -" << endl;
-	cout << "          -" << endl;
-	cout << "         -" << endl;
-	cout << "        --------" << endl;
-	cout << "       -" << endl;
-	cout << "      -" << endl;
-	cout << "     -" << endl;
-	cout << "    -" << endl;
+string F() {
+	string result;
+	result += "            -----------\n";
+	result += "           -\n";
+	result += "          -\n";
+	result += "         -\n";
+	result += "        --------\n";
+	result += "       -\n";
+	result += "      -\n";
+	result += "     -\n";
+	result += "    -\n";
+	return result;
 }

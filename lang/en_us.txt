@@ -1,0 +1,154 @@
+# Language File en_us
+# Version: v1.6.0-pre
+en_us;
+
+-WordGuessGame.UserError=User Error:
+-WordGuessGame.Start.Success=Started a game successfully.
+-WordGuessGame.Start.Gameisrunning=A game is already running!
+-WordGuessGame.Start.InsufficientWords=All the words have been guessed!
+-WordGuessGame.End.Invaild=Cannot finish the game: The conditions have not been met.
+-WordGuessGame.End.Win=Game over, you win!
+-WordGuessGame.End.Lose=Game over, you lose.
+-WordGuessGame.Rating.Excellent=   Excellent - Strength and luck coexist! You have perfectly completed the game!
+-WordGuessGame.Rating.A=     Impressive achievements! You have surpassed the level of most people!
+-WordGuessGame.Rating.B=     At least you have tried your best for these words!
+-WordGuessGame.Rating.C=     You have potential for improvement!
+-WordGuessGame.Rating.Fail=    Fail - Make persistent efforts!
+-WordGuessGame.Input.Nothing=You did not input anything.
+-WordGuessGame.Input.Invaild=You were not inputing any of the commands.
+-WordGuessGame.GuessAlpha.Guessed=Invaild guessing: You have already guessed this letter.
+-WordGuessGame.GuessAlpha.Invaild=Invaild guessing: The character inputed is not an alphabet.
+-WordGuessGame.GuessAlpha.Fail=Guessing alphabet failed. You will lose 1 HP.
+-WordGuessGame.GuessAlpha.Success=Guessing alphabet succeeded! The word includes {} letter {} and {} letter {}.
+-WordGuessGame.GuessWord.Invaild=Invalid input: You haven't made a proper guess or word guessing.
+-WordGuessGame.GuessWord.Fail=Guessing word failed. You will lose 2 HP.
+-WordGuessGame.GuessWord.Success=Guessing word succeeded! You win immediately!
+-WordGuessGame.DictionaryMode.GuessBanned=In translation mode, you can only guess the word.
+-WordGuessGame.DictionaryMode.TranslationHint.Success=You consumed {} HP, and showed 1 letter.
+-WordGuessGame.DictionaryMode.TranslationHint.Insufficient=Insufficient HP. Cannot hint.
+-WordGuessGame.ShowMeaning.OK=The Chinese meaning of this word is: {}
+
+# Texts
+-WordGuessGame.Text.Hello=Welcome to the Word Guess Game!
+-WordGuessGame.Text.Hello=This is an English word guessing and reasoning game. You can ask about whether the letters are contained in the words and combine them with common letter arrangements to eventually reveal the truth.
+-WordGuessGame.Text.Hello+
+-WordGuessGame.Text.Load=You are playing classic mode.
+-WordGuessGame.Text.Load=If you need to modify the game mode or other settings, you can open "settings.txt" to view the details.
+-WordGuessGame.Text.Turn_HP=Current HP: {}
+-WordGuessGame.Text.Turn_Guessed=You have guessed {} letters in {} letters totally.
+-WordGuessGame.Text.Turn_WordStatus=Current word:
+-WordGuessGame.Text.Turn_GuessedStatus=You have guessed these letters:
+-WordGuessGame.Text.Turn_Help=**You can input 1 to get help**
+-WordGuessGame.Text.Turn_Help+
+-WordGuessGame.Text.Turn_Remind=Please make your guess:
+-WordGuessGame.Text.GiveUp=Are you sure you want to give up?
+-WordGuessGame.Text.GiveUp=If you confirm that, enter / again.
+-WordGuessGame.Text.InteractResult+
+-WordGuessGame.Text.InteractResult={} unknown letter(s) left. Continue guessing it.
+-WordGuessGame.Text.End_Word=The correct word is: {}
+-WordGuessGame.Text.End_Meaning=Its Chinese meaning is: {}
+-WordGuessGame.Text.End_HP=HP: {}/10
+-WordGuessGame.Text.End_Guessed=Shown letter(s): {}/{} ({:.2f}%)
+-WordGuessGame.Text.End_Rating=Level/Ranking
+-WordGuessGame.Text.Continue=To quit the game, close this window. Press any key to restart.
+-WordGuessGame.Text.Finish=You have guessed all the words in the word list! Press any key to end the game.
+
+-WordGuessGame.DictionaryMode.Text.Load=Welcome to Word Guess Game Dictionary Mode!
+-WordGuessGame.DictionaryMode.Text.Load=It is the advanced mode of Word Guess Game, and might be helpful to memorize words!
+-WordGuessGame.DictionaryMode.Text.ModeChoose=The game is gonna start! You can choose your favourite gamemode according to the following descriptions.
+-WordGuessGame.DictionaryMode.Text.ModeChoose=You can input the number or word of each gamemode to choose it. If the input is invaild, it automatically chooses the first one.
+-WordGuessGame.DictionaryMode.Text.ModeChoose= - Rating Mode(1/Rating): Select several words randomly. Give a rank according to the number of words that are successfully guessed.
+-WordGuessGame.DictionaryMode.Text.ModeChoose= - Translation Mode(2/Translation): Select several words randomly. Do translations according to the given meaning. Consume less HP to get higher rating.
+-WordGuessGame.DictionaryMode.Text.ModeChoose= - Hardcore(3/Hardcore): Select several words randomly. you will be considered fail if you lose all hp, and the game will be terminated. Give a rank according to the number of words that are successfully guessed.
+-WordGuessGame.DictionaryMode.Text.ModeChoose=Input your choice: 
+-WordGuessGame.DictionaryMode.Text.Turns=Input the number of words you want to guess: 
+-WordGuessGame.DictionaryMode.Text.StartConfirm:1=Your mode choice: {}
+-WordGuessGame.DictionaryMode.Text.StartConfirm:2=The number of words(Totally {} words): {}
+-WordGuessGame.DictionaryMode.Text.StartConfirm:3=Are you ready? Press any key to start!
+-WordGuessGame.DictionaryMode.Text.TranslationMeaning=In translation mode, you need to translate English word based on its Chinese meaning: {}
+-WordGuessGame.DictionaryMode.Text.TurnComplete=Finish! {} turn(s) of guessing remain(s).
+-WordGuessGame.DictionaryMode.Text.TurnComplete+
+-WordGuessGame.DictionaryMode.Text.TurnFail=Fail. {} turn(s) of guessing remain(s).
+-WordGuessGame.DictionaryMode.Text.TurnFail+
+-WordGuessGame.DictionaryMode.Text.CurrentHp=Total HP: {}/{}
+-WordGuessGame.DictionaryMode.Text.GameFinish=Game over! You have guessed all the words!
+-WordGuessGame.DictionaryMode.Text.End_HP=Remaining HP totally: {}/{}
+-WordGuessGame.DictionaryMode.Text.End_HPPercentage=HP Percentage: {:.2f}%
+-WordGuessGame.DictionaryMode.Text.End_CompleteCount=Successful word guesses: {} / {}
+-WordGuessGame.DictionaryMode.Text.End_CompletePercentage=Completion Percentage: {:.2f}%
+-WordGuessGame.DictionaryMode.Text.End_CompletePercentage+
+-WordGuessGame.DictionaryMode.Text.HardcoreGiveUp=Attention! In hardcore mode, it means consuming the chance of revival or ending the whole game!
+-WordGuessGame.DictionaryMode.Text.HardcoreRevive=You ran out of HP in hardcore mode but revived and got 5 HP. This is the last chance to start over and stage a desperate comeback!
+-WordGuessGame.DictionaryMode.Text.HardcoreRevive+
+-WordGuessGame.DictionaryMode.Text.HardcoreAbort=Game over! You ran out of HP.
+-WordGuessGame.DictionaryMode.Text.HardcoreAbort+
+
+# Help
+-WordGuessGame.Help.Basic=Welcome to Word Guess Game!
+-WordGuessGame.Help.Basic=This is an English word guessing and reasoning game. You can ask about whether the letters are contained in the words and combine them with common letter arrangements to eventually reveal the truth.
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=Basic gameplay: When a game starts: The program will hide a word in which all the letters are unknown. Also it will tell you the length of the word.
+-WordGuessGame.Help.Basic=Gameplay: You can ask about whether the word contains a letter. If there is at least one uppercase or lowercase letter you are asking about in the word, you have guessed a letter successfully. The program will show where these letters are located.
+-WordGuessGame.Help.Basic=For example: You asked about whether a word ______ contains 'e', the program confirmed there is one letter in the word, and showed the location of E or e: ___e__
+-WordGuessGame.Help.Basic=Otherwise, the guess fails. You will lose 1 HP.
+-WordGuessGame.Help.Basic=The player has 10 HP each game, that is, 9 chances of failure. When the HP is less or equal than 0, the game fails.
+-WordGuessGame.Help.Basic=If the player successfully reveals all the letters in the word, the game is won.
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=To guess the entire word(called guess word): 
+-WordGuessGame.Help.Basic=If you have made several guesses and have made sure of the correct word, you can directly input the entire word and make a guess.
+-WordGuessGame.Help.Basic=If the word you guess matches the correct one, you win the game directly. Otherwise, you will lose 2 HP.
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=Hint: 
+-WordGuessGame.Help.Basic=In each game, players can get hints at any time.
+-WordGuessGame.Help.Basic=The effect of the prompt is to display the Chinese definition of this word.
+-WordGuessGame.Help.Basic=The way to use hint: Input character 0.
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=Ending: 
+-WordGuessGame.Help.Basic=Player can input / to give up.
+-WordGuessGame.Help.Basic=When the conditions for victory or defeat are met, the program will automatically end the game. The correct words, their Chinese definitions, and the player's performance (including remaining HP, the number of guessed letters, etc.) will be displayed.
+-WordGuessGame.Help.Basic=Then the game will display a rating based on the performance of this round. To get information about rating, input 2.
+-WordGuessGame.Help.Basic+
+
+-WordGuessGame.Help.Basic=Enjoy yourself!
+
+-WordGuessGame.Help.Rating=Remaining HP  Rating
+-WordGuessGame.Help.Rating=9~10         Excellent
+-WordGuessGame.Help.Rating=6~8          A
+-WordGuessGame.Help.Rating=4~5          B
+-WordGuessGame.Help.Rating=1~3          C
+-WordGuessGame.Help.Rating=0             Fail
+
+-WordGuessGame.Help.Interact=Interact commands help: 
+-WordGuessGame.Help.Interact=[Single letter] Guess letter
+-WordGuessGame.Help.Interact=[Word] Guess word
+-WordGuessGame.Help.Interact=/ Give up
+-WordGuessGame.Help.Interact=0 Use hint
+-WordGuessGame.Help.Interact=1 Get Basic helping information
+-WordGuessGame.Help.Interact=2 Get Rating helping information
+-WordGuessGame.Help.Interact=4 Get Interact helping information
+
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=Rating Mode Rules: 
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=You need to make multiple rounds of guesses continuously, and face a single word every turn. Other playing skills are the same as the default mode.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=Whether a certain word is successfully guessed or not, the next turn will begin after one turn of guessing is over. One turn of guessing doesn't takes the last turn's hp continuously.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating=After all turns of guessing are finished, you will be given a rating according to the remaining hp in all turns.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Rating+
+
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=Translation Mode Rules：
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=You need to make multiple rounds of guesses continuously, and face a single word every turn. You can only guess the whole word without guessing single alhpabet.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=You will get the Chinese meaning of the target word and the first letter of this word. How to win: Guess the word directly based on the given information.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=这个模式中存在提示：消耗一定生命值，翻开第一个未知字母。消耗的生命值由 2 点每次递增，生命值不足时，无法使用提示。
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation=After all turns of guessing are finished, you will be given a rating according to the remaining hp in all turns.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Translation+
+
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=Hardcore Mode Rules:
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=You need to make multiple rounds of guesses continuously, and face a single word every turn.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=You initially have 15 hp. Every turn of guessing takes the hp from last turn.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=When you successfully guess a word, your hp will be restored as a certain proportion of your remaining hp. Your hp can be 15 at most.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=When you first time run out of hp in any turn, you can guess the whole word immediately. If you succeed, you "revive" and the game continues.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=You can only revive once in a game. When you run out of hp twice, the game stops as a failure.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore=If you successfully finish all turns, you will be given a rating according to the remaining hp.
+-WordGuessGame.Help.DictionaryMode.Gamemode.Hardcore+

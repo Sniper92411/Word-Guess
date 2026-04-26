@@ -42,21 +42,17 @@ class Translator {
                 return 1;
             }
         }
-        string translate(string id, bool NewLine = true) {
-            if(translations[this->language].count(id) == 0) {
-                if(NewLine) return id + '\n';
-                else return id;
-            }
-            if(NewLine) return translations[this->language][id] + '\n';
-            return translations[this->language][id];
+        string translate(string id, int NewLine = 1) {
+            string Lines;
+            for(int i = 1;i <= NewLine;i++) Lines += '\n';
+            if(translations[this->language].count(id) == 0)  return id + Lines;
+            return translations[this->language][id] + Lines;
         }
-        string translate(string language, string id, bool NewLine) {
-            if(translations[language].count(id) == 0) {
-                if(NewLine) return id + '\n';
-                else return id;
-            }
-            if(NewLine) return translations[language][id] + '\n';
-            return translations[language][id];
+        string translate(string language, string id, int NewLine = 1) {
+            string Lines;
+            for(int i = 1;i <= NewLine;i++) Lines += '\n';
+            if(translations[language].count(id) == 0) return id + Lines;
+            return translations[language][id] + Lines;
         }
 };
 
